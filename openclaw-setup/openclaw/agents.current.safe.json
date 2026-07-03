@@ -1,0 +1,235 @@
+﻿{
+    "capturedAt":  "2026-07-04T03:05:56+09:00",
+    "source":  "%USERPROFILE%\\.openclaw\\openclaw.json",
+    "defaults":  {
+                     "workspace":  "%USERPROFILE%\\.openclaw\\workspace",
+                     "model":  {
+                                   "primary":  "openai/gpt-5.5",
+                                   "fallbacks":  [
+
+                                                 ]
+                               },
+                     "imageModel":  {
+                                        "primary":  "google/gemini-3.1-flash-image-preview"
+                                    },
+                     "thinkingDefault":  "off",
+                     "subagents":  {
+                                       "delegationMode":  "prefer",
+                                       "maxConcurrent":  5
+                                   }
+                 },
+    "agents":  [
+                   {
+                       "id":  "main",
+                       "name":  "jay-manager",
+                       "default":  true,
+                       "model":  null,
+                       "imageModel":  null,
+                       "description":  "Manager agent for Jongwoo: conversation, routing, status, cancellation, and worker orchestration.",
+                       "workspace":  null,
+                       "agentDir":  null,
+                       "subagents":  {
+                                         "delegationMode":  "prefer",
+                                         "allowAgents":  [
+                                                             "orchestrator-agent",
+                                                             "research-agent",
+                                                             "doc-agent",
+                                                             "build-agent",
+                                                             "build-agent-2",
+                                                             "build-agent-3",
+                                                             "build-agent-4",
+                                                             "qa-agent",
+                                                             "browser-agent",
+                                                             "integrator-agent",
+                                                             "render-agent",
+                                                             "image-draft-agent",
+                                                             "image-final-agent",
+                                                             "codex-opendesign-agent"
+                                                         ]
+                                     }
+                   },
+                   {
+                       "id":  "orchestrator-agent",
+                       "name":  "orchestrator-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Orchestrates Jongwoo\u0027s AI workforce: criteria, worker assignment, queue state, progress tracking, result collection, and reports back to Jay.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\orchestrator-agent\\agent",
+                       "subagents":  {
+                                         "delegationMode":  "prefer",
+                                         "allowAgents":  [
+                                                             "research-agent",
+                                                             "doc-agent",
+                                                             "build-agent",
+                                                             "build-agent-2",
+                                                             "build-agent-3",
+                                                             "build-agent-4",
+                                                             "qa-agent",
+                                                             "browser-agent",
+                                                             "integrator-agent",
+                                                             "render-agent",
+                                                             "image-draft-agent",
+                                                             "image-final-agent",
+                                                             "codex-opendesign-agent"
+                                                         ]
+                                     }
+                   },
+                   {
+                       "id":  "research-agent",
+                       "name":  "research-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Research, source discovery, evidence collection, and structured notes.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-research-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\research-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "doc-agent",
+                       "name":  "doc-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Documents, PPT outlines, reports, summaries, and presentation copy.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-doc-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\doc-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "build-agent",
+                       "name":  "build-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "File generation, scripts, data transforms, artifact assembly, and verification. Does not own design direction or image generation.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-build-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\build-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "build-agent-2",
+                       "name":  "build-agent-2",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Builder lane 2 for parallel artifact assembly, file generation, scripts, data transforms, and verification. Does not own design direction or image generation.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-build-agent-2",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\build-agent-2\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "build-agent-3",
+                       "name":  "build-agent-3",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Builder lane 3 for parallel artifact assembly, file generation, scripts, data transforms, and verification. Does not own design direction or image generation.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-build-agent-3",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\build-agent-3\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "build-agent-4",
+                       "name":  "build-agent-4",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Builder lane 4 for parallel artifact assembly, file generation, scripts, data transforms, and verification. Does not own design direction or image generation.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-build-agent-4",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\build-agent-4\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "qa-agent",
+                       "name":  "qa-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Review, validation, risk checks, numbers, sources, and file QA.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-qa-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\qa-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "browser-agent",
+                       "name":  "browser-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Browser, map capture, login-bound checks, external UI workflows, and screenshots.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-browser-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\browser-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "integrator-agent",
+                       "name":  "integrator-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Artifact pipeline integrator for PPTX integration, partial-deck merge, style unification, Korean layout consistency, and final enhanced PPTX assembly.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-integrator-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\integrator-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "render-agent",
+                       "name":  "render-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Artifact pipeline renderer/exporter for PPTX to PDF, PNG previews, contact sheets, final packages, and export verification.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-render-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\render-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "image-draft-agent",
+                       "name":  "image-draft-agent",
+                       "default":  null,
+                       "model":  "google/gemini-3-flash-preview",
+                       "imageModel":  null,
+                       "description":  "Gemini image draft lane for visual direction, prompt packs, mood variants, and fast candidate asset generation for decks and visual artifacts.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-image-draft-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\image-draft-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "image-final-agent",
+                       "name":  "image-final-agent",
+                       "default":  null,
+                       "model":  "google/gemini-3.1-pro-preview",
+                       "imageModel":  null,
+                       "description":  "Gemini high-quality image final lane for selected hero assets, final visual polish, image edits, and production-ready image handoff.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-image-final-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\image-final-agent\\agent",
+                       "subagents":  null
+                   },
+                   {
+                       "id":  "codex-opendesign-agent",
+                       "name":  "codex-opendesign-agent",
+                       "default":  null,
+                       "model":  "openai/gpt-5.5",
+                       "imageModel":  null,
+                       "description":  "Codex Open Design/Figma worker for Quality/Premium deck design systems, layout tokens, screenshots/exported artifacts, and OPEN_DESIGN_EVIDENCE.md before PPTX build.",
+                       "workspace":  "%USERPROFILE%\\.openclaw\\workspace-codex-opendesign-agent",
+                       "agentDir":  "%USERPROFILE%\\.openclaw\\agents\\codex-opendesign-agent\\agent",
+                       "subagents":  null
+                   }
+               ],
+    "excluded":  [
+                     "auth profiles",
+                     "tokens",
+                     "credentials",
+                     "identity",
+                     "sessions",
+                     "logs",
+                     "locks",
+                     "queues",
+                     "codex-home sqlite state",
+                     "plugin caches"
+                 ]
+}

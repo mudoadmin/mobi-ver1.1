@@ -1,0 +1,165 @@
+{
+  "defaults": {
+    "workspace": "%USERPROFILE%\\.openclaw\\workspace",
+    "model": {
+      "primary": "openai/gpt-5.5",
+      "fallbacks": []
+    },
+    "imageModel": {
+      "primary": "google/gemini-3.1-flash-image-preview"
+    },
+    "thinkingDefault": "off",
+    "subagents": {
+      "delegationMode": "prefer",
+      "maxConcurrent": 5
+    }
+  },
+  "list": [
+    {
+      "id": "main",
+      "name": "jay-manager",
+      "description": "Manager agent: conversation, routing, status, cancellation, and worker orchestration.",
+      "default": true,
+      "subagents": {
+        "delegationMode": "prefer",
+        "allowAgents": [
+          "orchestrator-agent",
+          "research-agent",
+          "doc-agent",
+          "build-agent",
+          "build-agent-2",
+          "build-agent-3",
+          "build-agent-4",
+          "qa-agent",
+          "browser-agent",
+          "integrator-agent",
+          "render-agent",
+          "image-draft-agent",
+          "image-final-agent"
+        ]
+      }
+    },
+    {
+      "id": "orchestrator-agent",
+      "name": "orchestrator-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\orchestrator-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Criteria, worker assignment, queue state, progress tracking, result collection.",
+      "subagents": {
+        "delegationMode": "prefer",
+        "allowAgents": [
+          "research-agent",
+          "doc-agent",
+          "build-agent",
+          "build-agent-2",
+          "build-agent-3",
+          "build-agent-4",
+          "qa-agent",
+          "browser-agent",
+          "integrator-agent",
+          "render-agent",
+          "image-draft-agent",
+          "image-final-agent"
+        ]
+      }
+    },
+    {
+      "id": "research-agent",
+      "name": "research-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-research-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\research-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Research, source discovery, evidence collection, and structured notes."
+    },
+    {
+      "id": "doc-agent",
+      "name": "doc-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-doc-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\doc-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Documents, PPT outlines, reports, summaries, and presentation copy."
+    },
+    {
+      "id": "build-agent",
+      "name": "build-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-build-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\build-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "File generation, scripts, transforms, artifact assembly, and verification. Does not own design direction or image generation."
+    },
+    {
+      "id": "build-agent-2",
+      "name": "build-agent-2",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-build-agent-2",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\build-agent-2\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Parallel builder lane 2. Does not own design direction or image generation."
+    },
+    {
+      "id": "build-agent-3",
+      "name": "build-agent-3",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-build-agent-3",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\build-agent-3\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Parallel builder lane 3. Does not own design direction or image generation."
+    },
+    {
+      "id": "build-agent-4",
+      "name": "build-agent-4",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-build-agent-4",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\build-agent-4\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Parallel builder lane 4. Does not own design direction or image generation."
+    },
+    {
+      "id": "qa-agent",
+      "name": "qa-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-qa-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\qa-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Review, validation, risk checks, numbers, sources, and file QA."
+    },
+    {
+      "id": "browser-agent",
+      "name": "browser-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-browser-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\browser-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Browser, map capture, login-bound checks, external UI workflows, and screenshots."
+    },
+    {
+      "id": "integrator-agent",
+      "name": "integrator-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-integrator-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\integrator-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "Final PPTX integration, partial-deck merge, style unification, Korean layout consistency."
+    },
+    {
+      "id": "render-agent",
+      "name": "render-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-render-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\render-agent\\agent",
+      "model": "openai/gpt-5.5",
+      "description": "PPTX to PDF, PNG previews, contact sheets, final packages, and export verification."
+    },
+    {
+      "id": "image-draft-agent",
+      "name": "image-draft-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-image-draft-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\image-draft-agent\\agent",
+      "model": "google/gemini-3-flash-preview",
+      "description": "Gemini image draft lane for visual direction, prompt packs, mood variants, and fast candidate asset generation."
+    },
+    {
+      "id": "image-final-agent",
+      "name": "image-final-agent",
+      "workspace": "%USERPROFILE%\\.openclaw\\workspace-image-final-agent",
+      "agentDir": "%USERPROFILE%\\.openclaw\\agents\\image-final-agent\\agent",
+      "model": "google/gemini-3.1-pro-preview",
+      "description": "Gemini high-quality image final lane for selected hero assets, final visual polish, image edits, and production-ready image handoff."
+    }
+  ]
+}
+
